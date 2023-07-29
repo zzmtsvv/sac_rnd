@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+weights
+
+runs
+video
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+workshop.ipynb
+
+# pyenv
+.python-version
+
+# vscode
+.vscode
+
+# mac
+.DS_Store
+
+train.ipynb
