@@ -11,7 +11,7 @@ python install -r requirements.txt
 ```
 Anyway, you would also need to install mujoco stuff by your own, you can follow [the steps from the authors](https://github.com/tinkoff-ai/sac-rnd)
 
-if you want to train the model, setup `rnd_config` in `config.py`, initialize `SACRNDTrainer` in `trainer.py`, change `state_dim` and `action_dim` attributes if necessary and run its `train` method:
+if you want to train the model, setup `rnd_config` in `config.py`, initialize `SACRNDTrainer` in `trainer.py` and run its `train` method:
 ```python3
 from trainer import SACRNDTrainer
 
