@@ -26,12 +26,12 @@ class SACRNDTrainer:
         self.batch_size = cfg.batch_size
         self.cfg = cfg
 
-        self.action_dim = 6
-        self.state_dim = 17
-
         self.eval_env = gym.make(cfg.dataset_name)
         self.eval_env.seed(cfg.eval_seed)
         d4rl_dataset = d4rl.qlearning_dataset(self.eval_env)
+        
+        self.state_dim = self.eval_env.observation_space.shape[0]
+        self.action_dim = self.eval_env.action_space.shape[0]
 
         self.buffer = ReplayBuffer(self.state_dim, self.action_dim)
         # self.buffer.from_d4rl(d4rl_dataset)
