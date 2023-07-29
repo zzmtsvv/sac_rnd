@@ -39,7 +39,12 @@ class SAC_RND:
         self.gamma = gamma
         self.tau = tau
 
-        # adaptive beta regularizer
+        '''
+        In the official implementation the coefficient names for regularizers are switched
+        (alpha for log prob and beta for anti-exploration rnd bonus)
+        However, I try to stick to the paper's notation and use these terms
+        (check sac_rnd.PNG in `paper` folder for details)
+        '''
         self.target_entropy = -float(self.actor.action_dim)
         self.log_beta = torch.tensor([0.0], dtype=torch.float32, device=device, requires_grad=True)
         self.beta_optim = torch.optim.Adam([self.log_beta], lr=beta_lr)
@@ -51,6 +56,11 @@ class SAC_RND:
                    reward: torch.Tensor,
                    next_state: torch.Tensor,
                    done: torch.Tensor) -> Dict[str, Any]:
+        '''
+            The update in official implementation is made in order beta-actor-critic
+
+            In this implementation the order is as in the paper: critic-actor-beta
+        '''
         with torch.no_grad():
             next_action, next_action_log_prob = self.actor(next_state, need_log_prob=True)
 

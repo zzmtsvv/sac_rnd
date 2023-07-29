@@ -186,12 +186,3 @@ class EnsembledCritic(nn.Module):
         concat = concat.repeat_interleave(self.num_critics, dim=0)
         q_values = self.critic(concat).squeeze(-1)
         return q_values
-    
-    def enable_grads(self):
-        for p in self.parameters():
-            p.requires_grad = True
-    
-    def disable_grads(self):
-        for p in self.parameters():
-            p.requires_grad = False
-    

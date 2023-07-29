@@ -14,7 +14,7 @@ from utils import seed_everything, make_dir
 
 import wandb
 
-# import d4rl
+import d4rl
 
 
 class SACRNDTrainer:
@@ -29,9 +29,9 @@ class SACRNDTrainer:
         self.action_dim = 6
         self.state_dim = 17
 
-        # self.eval_env = gym.make(cfg.dataset_name)
-        # self.eval_env.seed(cfg.eval_seed)
-        # d4rl_dataset = d4rl.qlearning_dataset(self.eval_env)
+        self.eval_env = gym.make(cfg.dataset_name)
+        self.eval_env.seed(cfg.eval_seed)
+        d4rl_dataset = d4rl.qlearning_dataset(self.eval_env)
 
         self.buffer = ReplayBuffer(self.state_dim, self.action_dim)
         # self.buffer.from_d4rl(d4rl_dataset)
