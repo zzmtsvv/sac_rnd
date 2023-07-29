@@ -1,6 +1,6 @@
 # Anti-Exploration by Random Network Distillation on PyTorch
 
-This repository contains possible (not ideal one actually) PyTorch implementation of [SAC RND](https://arxiv.org/abs/2301.13616) based on [official realization](https://github.com/tinkoff-ai/CORL/blob/howuhh/sac-rnd/algorithms/sac_rnd_jax.py) written on Jax.
+This repository contains possible (not ideal one actually) PyTorch implementation of [SAC RND](https://arxiv.org/abs/2301.13616) with the `wandb` integration. It is based on [official realization](https://github.com/tinkoff-ai/CORL/blob/howuhh/sac-rnd/algorithms/sac_rnd_jax.py) written on Jax.
 
 ## Setup
 In order to be able to run code, just install the requirements:
