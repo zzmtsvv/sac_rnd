@@ -14,7 +14,7 @@ from utils import seed_everything, make_dir
 
 import wandb
 
-import d4rl
+# import d4rl
 
 
 class SACRNDTrainer:

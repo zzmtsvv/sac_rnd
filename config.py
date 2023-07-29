@@ -5,7 +5,7 @@ from dataclasses import dataclass
 @dataclass
 class rnd_config:
     project: str = "sac_rnd"
-    group: str = "first_attempt"
+
 
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
     checkpoint_path: str = "weights/sac_rnd.pt"
@@ -27,12 +27,14 @@ class rnd_config:
     rnd_embedding_dim: int = 32
     rnd_num_epochs: int = 1
 
-    dataset_name: str = "halfcheetah-medium-v2"  # "walker2d-medium-v2"
+    dataset_name: str = "walker2d-medium-v2"  # "halfcheetah-medium-v2"
     batch_size: int = 1024
-    num_epochs: int = 3000
+    num_epochs: int = 150
     num_updates_on_epoch: int = 1000
     logging_interval: int = 10
     normalize_reward: bool = False
+    
+    group: str = dataset_name
 
     eval_episodes: int = 10
     eval_period: int = 50

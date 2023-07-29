@@ -135,7 +135,8 @@ class EnsembledLinear(nn.Module):
         nn.init.uniform_(self.bias, -bound, bound)
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return x @ self.weight + self.bias
+        out = x @ self.weight + self.bias
+        return out
 
 
 class EnsembledCritic(nn.Module):
@@ -181,7 +182,16 @@ class EnsembledCritic(nn.Module):
     
     def forward(self, state: torch.Tensor, action: torch.Tensor) -> torch.Tensor:
         concat = torch.cat([state, action], dim=-1)
-        concat.unsqueeze_(0)
+        concat = concat.unsqueeze(0)
         concat = concat.repeat_interleave(self.num_critics, dim=0)
         q_values = self.critic(concat).squeeze(-1)
         return q_values
+    
+    def enable_grads(self):
+        for p in self.parameters():
+            p.requires_grad = True
+    
+    def disable_grads(self):
+        for p in self.parameters():
+            p.requires_grad = False
+    
