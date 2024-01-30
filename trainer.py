@@ -34,8 +34,8 @@ class SACRNDTrainer:
         self.action_dim = self.eval_env.action_space.shape[0]
 
         self.buffer = ReplayBuffer(self.state_dim, self.action_dim)
-        # self.buffer.from_d4rl(d4rl_dataset)
-        self.buffer.from_json(cfg.dataset_name)
+        self.buffer.from_d4rl(d4rl_dataset)
+        # self.buffer.from_json(cfg.dataset_name)
 
         seed_everything(cfg.train_seed)
     
